@@ -1,0 +1,21 @@
+{
+  "name": "backend-2",
+  "version": "1.0.0",
+  "description": "munisekhar rr",
+  "main": "a.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node a.js",
+    "start-surver": "start-surver"
+  },
+  "keywords": [
+    "udavalapati",
+    "munisekhar"
+  ],
+  "author": "sekhar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.0.2"
+  }
+}
