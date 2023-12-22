@@ -46,17 +46,23 @@
 
 const http = require('http');
 const express=require('express');
+const bodyparser= require('body-parser')
 
 const app =express();
-app.use((req,res,next)=>{
-  console.log("iam the midel ware");
-  next();
-  
+app.use(bodyparser.urlencoded({extended: false}))
+app.use('/add-product',(req,res,next)=>{
+  console.log("iam  wave");
+  res.send('<form action="/prodects" method="POST"><input type="text" name="title"><button type="submit">add product</button></form>');
 });
 
-app.use((req,res,next)=>{
+app.use('/prodects',(req,res,next)=>{
+    console.log(req.body)
+    res.redirect('/');
+});
+
+app.use('/',(req,res,)=>{
   console.log("iam nother midel wave");
-  res.send({ key1: value });
+  res.send('<h1>welcome to the</h1>');
 });
 
 const server=http.createServer(app);
