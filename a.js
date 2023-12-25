@@ -44,27 +44,21 @@
 
 
 
-const http = require('http');
+// const http = require('http');
 const express=require('express');
 const bodyparser= require('body-parser')
 
 const app =express();
-app.use(bodyparser.urlencoded({extended: false}))
-app.use('/add-product',(req,res,next)=>{
-  console.log("iam  wave");
-  res.send('<form action="/prodects" method="POST"><input type="text" name="title"><button type="submit">add product</button></form>');
-});
 
-app.use('/prodects',(req,res,next)=>{
-    console.log(req.body)
-    res.redirect('/');
-});
+const adminroutes=require('./routes/admin.js')
+const shopeRouters= require('./routes/shop.js')
 
-app.use('/',(req,res,)=>{
-  console.log("iam nother midel wave");
-  res.send('<h1>welcome to the</h1>');
-});
+app.use(bodyparser.urlencoded({extended: false}));
 
-const server=http.createServer(app);
+app.use(adminroutes);
+app.use(shopeRouters)
 
-server.listen(3000);
+app.use((req,res,next)=>{
+    res.status(404).send('<h1> Page not found<h1>');
+})
+app.listen(3000);
